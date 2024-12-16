@@ -32,7 +32,7 @@ resource "azurerm_subnet" "MGM_SubNet" {
 }
 
 #Subnet Creation - Application Servers
-resource "azurerm_subnet" "MGM_SubNet" {
+resource "azurerm_subnet" "App_SubNet" {
   name                 = var.App_Subnet_Name
   resource_group_name  = data.azurerm_resource_group.Prod-RG.name
   virtual_network_name = azurerm_virtual_network.Infra_vNet.name
