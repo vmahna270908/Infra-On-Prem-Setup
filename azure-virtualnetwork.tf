@@ -18,7 +18,7 @@ resource "azurerm_virtual_network" "Infra_vNet" {
 #Subnet Creation
 resource "azurerm_subnet" "DC_SubNet" {
   name                 = var.DC_Subnet_Name
-  resource_group_name  = data.azurerm_resource_group.Prod-RG
+  resource_group_name  = data.azurerm_resource_group.Prod-RG.name
   virtual_network_name = azurerm_virtual_network.Infra_vNet.name
   address_prefixes     = var.DC_Subnet_Address_Space
 }
