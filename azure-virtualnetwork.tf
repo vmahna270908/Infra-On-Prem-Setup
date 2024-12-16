@@ -15,10 +15,26 @@ resource "azurerm_virtual_network" "Infra_vNet" {
   project = "Infra"
   }
 }
-#Subnet Creation
+#Subnet Creation - Domain Controllers
 resource "azurerm_subnet" "DC_SubNet" {
   name                 = var.DC_Subnet_Name
   resource_group_name  = data.azurerm_resource_group.Prod-RG.name
   virtual_network_name = azurerm_virtual_network.Infra_vNet.name
   address_prefixes     = var.DC_Subnet_Address_Space
+}
+
+#Subnet Creation - Jump Servers
+resource "azurerm_subnet" "MGM_SubNet" {
+  name                 = var.MGM_Subnet_Name
+  resource_group_name  = data.azurerm_resource_group.Prod-RG.name
+  virtual_network_name = azurerm_virtual_network.Infra_vNet.name
+  address_prefixes     = var.MGM_Subnet_Address_Space
+}
+
+#Subnet Creation - Application Servers
+resource "azurerm_subnet" "MGM_SubNet" {
+  name                 = var.App_Subnet_Name
+  resource_group_name  = data.azurerm_resource_group.Prod-RG.name
+  virtual_network_name = azurerm_virtual_network.Infra_vNet.name
+  address_prefixes     = var.App_Subnet_Address_Space
 }
