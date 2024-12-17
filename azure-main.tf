@@ -135,18 +135,3 @@ SETTINGS
 }
 
 
-#Network Interface for the DC
-resource "azurerm_network_interface" "DC1-NIC" {
-  name                = "AZ-DC1-NIC"
-  location            = data.azurerm_resource_group.Prod-RG.location
-  resource_group_name = data.azurerm_resource_group.Prod-RG.name
-  ip_configuration {
-    name                          = "internal"
-    subnet_id                     = azurerm_subnet.DC_SubNet.id
-    private_ip_address_allocation = "Static"
-    private_ip_address            = cidrhost(var.node_address_prefix_dc, 4)
-  }
-}
-
-
-
