@@ -46,7 +46,7 @@ variable "App_Subnet_Address_Space" {
   description = "Application Subnet Address Space"
 }
 
-variable "AZ-DC1" {
+variable "DC1-Name" {
   type        = string
   default     = "AZ-DC1"
   description = "Domain Controller 1 Name"

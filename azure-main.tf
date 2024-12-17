@@ -107,6 +107,32 @@ resource "azurerm_subnet_network_security_group_association" "dc_subnet_nsg_asso
 
 }
 
+resource "azurerm_windows_virtual_machine" "WIN_DC" {
+  name  = var.DC1-Name
+  resource_group_name = data.azurerm_resource_group.Prod-RG.name
+  location            = data.azurerm_resource_group.Prod-RG.location
+  size                = "Standard_F2"
+  admin_username        = var.domainusername
+  admin_password        = var.domainpassword
+  network_interface_ids = [
+    azurerm_network_interface.dc_nic.id,
+  ]
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2016-Datacenter"
+    version   = "latest"
+  }
+  tags = {
+  type = "VM"
+  RG ="Prod-RG"
+  project = "Infra"
+  }
+}
 
 
 
