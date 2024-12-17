@@ -150,7 +150,7 @@ resource "azurerm_virtual_machine_extension" "create-active-directory-forest" {
   publisher            = "Microsoft.Compute"
   type                 = "CustomScriptExtension"
   type_handler_version = "1.9"
-  virtual_machine_id = azurerm.virtual_machine_id.windows_vm_domaincontroller.id
+  virtual_machine_id = azurerm_windows_virtual_machine.windows_vm_domaincontroller.id
 
   settings = <<SETTINGS
     {
