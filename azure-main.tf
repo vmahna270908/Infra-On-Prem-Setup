@@ -110,8 +110,8 @@ resource "azurerm_subnet_network_security_group_association" "dc_subnet_nsg_asso
 #VM for the DC
 resource "azurerm_windows_virtual_machine" "windows_vm_domaincontroller" {
   name  = var.AZ-DC1
-  location              = azurerm_resource_group.dc_rg.location
-  resource_group_name   = azurerm_resource_group.dc_rg.name
+  location              = data.azurerm_resource_group.Prod-RG.location
+  resource_group_name   = data.azurerm_resource_group.Prod-RG.name
   network_interface_ids = [azurerm_network_interface.dc_nic.id]
   size                  = "Standard_D2s_v3"
   admin_username        = var.domainusername
@@ -137,7 +137,7 @@ resource "azurerm_windows_virtual_machine" "windows_vm_domaincontroller" {
 
 locals { 
   import_command       = "Import-Module ADDSDeployment"
-  password_command     = "$password = ConvertTo-SecureString ${vvar.domainpassword} -AsPlainText -Force"
+  password_command     = "$password = ConvertTo-SecureString ${var.domainpassword} -AsPlainText -Force"
   install_ad_command   = "Add-WindowsFeature -name ad-domain-services -IncludeManagementTools"
   configure_ad_command = "Install-ADDSForest -CreateDnsDelegation:$false -DomainMode Win2012R2 -DomainName ${var.active_directory_domain} -DomainNetbiosName ${var.active_directory_netbios_name} -ForestMode Win2012R2 -InstallDns:$true -SafeModeAdministratorPassword $password -Force:$true"
   shutdown_command     = "shutdown -r -t 10"
