@@ -82,3 +82,9 @@ variable "active_directory_netbios_name" {
   default = "Cloud2Build"
   description = "The netbios name of the Active Directory domain"
 }
+
+variable "virtual_machine_size" {
+  type        = string
+  default     = "Standard_B2s"
+  description = "Size or SKU of the Virtual Machine."
+}

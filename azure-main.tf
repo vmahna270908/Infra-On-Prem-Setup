@@ -113,7 +113,7 @@ resource "azurerm_windows_virtual_machine" "windows_vm_domaincontroller" {
   location              = data.azurerm_resource_group.Prod-RG.location
   resource_group_name   = data.azurerm_resource_group.Prod-RG.name
   network_interface_ids = [azurerm_network_interface.dc_nic.id]
-  size                  = "Standard_D2s_v3"
+  size                  = var.virtual_machine_size
   admin_username        = var.domainusername
   admin_password        = var.domainpassword
   os_disk {
