@@ -45,3 +45,35 @@ variable "App_Subnet_Address_Space" {
   default     = ["172.16.0.16/28"]
   description = "Application Subnet Address Space"
 }
+
+variable "AZ-DC1" {
+  type        = string
+  default     = "AZ-DC1"
+  description = "Domain Controller 1 Name"
+}
+
+variable "node_address_prefix_dc" {
+  default = "172.16.0.0/29"
+}
+
+variable "domainusername" {
+  type        = string
+  default     = "Skywalker"
+  description = "Domain Username"
+}
+
+variable "domainpassword" {
+  type        = string
+  default     = "mt4cebwU!"
+  description = "Domain Useraccount Password"
+}
+
+variable "active_directory_domain" {
+  default = "Cloud2Build.ca"
+  description = "The name of the Active Directory domain"
+}
+
+variable "active_directory_netbios_name" {
+  default = "Cloud2Build"
+  description = "The netbios name of the Active Directory domain"
+}
