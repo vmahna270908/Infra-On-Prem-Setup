@@ -38,3 +38,6 @@ resource "azurerm_subnet" "App_SubNet" {
   virtual_network_name = azurerm_virtual_network.Infra_vNet.name
   address_prefixes     = var.App_Subnet_Address_Space
 }
+
+#Deploying the Domain Controller
+
