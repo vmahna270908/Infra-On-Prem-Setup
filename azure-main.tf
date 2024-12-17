@@ -45,6 +45,7 @@ resource "azurerm_public_ip" "dc_public_ip" {
   location            = data.azurerm_resource_group.Prod-RG.location
   resource_group_name = data.azurerm_resource_group.Prod-RG.name
   allocation_method   = "Dynamic"
+  sku = "Basic"
   tags = {
   type = "Public IP"
   RG ="Prod-RG"
@@ -66,7 +67,6 @@ resource "azurerm_network_interface" "dc_nic" {
   ip_configuration {
     name      = "internal"
     subnet_id = azurerm_subnet.DC_SubNet.id
-    #private_ip_address_allocation = "Dynamic"
     private_ip_address_allocation = "Static"
     private_ip_address            = cidrhost(var.node_address_prefix_dc, 4)
     public_ip_address_id          = azurerm_public_ip.dc_public_ip.id
