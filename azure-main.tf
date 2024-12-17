@@ -159,7 +159,7 @@ resource "azurerm_virtual_machine_extension" "create-active-directory-forest" {
         "commandToExecute": "powershell.exe -Command \"${local.powershell_command}\""
     }
 SETTINGS
-}
+}#
 
 
 
