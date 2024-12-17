@@ -7,7 +7,6 @@ terraform {
     }
   }
 }
-
 terraform {
   backend "azurerm" {
     resource_group_name  = "Prod-RG"
@@ -16,8 +15,11 @@ terraform {
     key                  = "terraform.tfstate"
   }
 }
-
 provider "azurerm" {
   features{}
 }
-##
+
+
+provider "azurerm" {
+  features {}
+}

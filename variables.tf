@@ -52,6 +52,11 @@ variable "AZ-DC1" {
   description = "Domain Controller 1 Name"
 }
 
+variable "DC1-NIC" {
+  type        = string
+  default     = "AZ-DC1-NIC"
+  description = "Domain Controller 1 NIC Name"
+}
 variable "node_address_prefix_dc" {
   default = "172.16.0.0/29"
 }
